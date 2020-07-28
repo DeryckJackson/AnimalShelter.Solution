@@ -18,5 +18,11 @@ namespace AnimalShelter.Controllers
       List<AnimalType> model = _db.AnimalTypes.ToList();
       return View(model);
     }
+
+    public ActionResult Details(int animalTypeId)
+    {
+      IEnumerable<Animal> typeList = _db.Animals.Any(animals => animals.AnimalTypeId == animalTypeId);
+      return View(typeList);
+    }
   }
 }

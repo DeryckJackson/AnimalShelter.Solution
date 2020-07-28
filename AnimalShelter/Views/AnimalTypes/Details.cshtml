@@ -1,0 +1,12 @@
+@{
+  Layout = "_Layout";
+}
+
+@model AnimalShelter.Models.AnimalType
+
+<ul>
+@foreach (Animal animal in Model)
+{
+  <li>@Html.ActionLink($"{animal.Name}", "Details", "Animals")</li>
+}
+</ul>
