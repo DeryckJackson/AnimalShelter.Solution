@@ -1,5 +1,5 @@
 @{
-  Layout = "Layout";
+  Layout = "_Layout";
 }
 
 @model AnimalShelter.Models.Animal
@@ -7,8 +7,14 @@
 <h4>Add a new animal</h4>
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Description)
-  @Html.TextBoxFor(model => model.Description)
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  @Html.LabelFor(model => model.Gender)
+  @Html.TextBoxFor(model => model.Gender)
+  @Html.LabelFor(model => model.AdmittanceDate)
+  @Html.EditorFor(model => model.AdmittanceDate)
+  @Html.LabelFor(model => model.Breed)
+  @Html.TextBoxFor(model => model.Breed)
   <input type="submit" value="Add new animal" /> 
 }
 <p>@Html.ActionLink("Show all animals", "Index")</p>
