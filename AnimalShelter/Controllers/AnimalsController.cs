@@ -14,10 +14,17 @@ namespace AnimalShelter.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+    public ActionResult Index(string sortOrder)
     {
-      IEnumerable<Animal> model = _db.Animals.ToList()
-      .OrderBy(animal => animal.AdmittanceDate);
+      IEnumerable<Animal> model = _db.Animals.ToList();
+      if (sortOrder == "date")
+      {
+        model = model.OrderBy(animal => animal.AdmittanceDate);
+      }
+      if (sortOrder == "breed")
+      {
+        model = model.OrderBy(animal => animal.Breed);
+      }
       return View(model);
     }
 
