@@ -9,5 +9,8 @@ namespace AnimalShelter.Models
     public string Gender { get; set; }
     public DateTime AdmittanceDate { get; set; }
     public string Breed { get; set; }
+
+    public int AnimalTypeId { get; set; }
+    public virtual AnimalType AnimalType { get; set; }
   }
 }

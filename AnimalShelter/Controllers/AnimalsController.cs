@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using AnimalShelter.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AnimalShelter.Controllers
 {
@@ -16,7 +18,7 @@ namespace AnimalShelter.Controllers
 
     public ActionResult Index(string sortOrder)
     {
-      IEnumerable<Animal> model = _db.Animals.ToList();
+      IEnumerable<Animal> model = _db.Animals.Include(animals => animals.AnimalType).ToList();
       if (sortOrder == "date")
       {
         model = model.OrderBy(animal => animal.AdmittanceDate);
